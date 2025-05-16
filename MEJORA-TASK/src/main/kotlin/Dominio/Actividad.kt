@@ -11,7 +11,7 @@ abstract class Actividad(
     }
 
 
-    protected open var fechaCreacion: String = Utils.obtenerFechaActual()
+    protected var fechaCreacion: String = Utils.obtenerFechaActual()
     open var fecha = fechaCreacion
     protected open var id: String = "${CalculoId.generarId(fechaCreacion)}"
 

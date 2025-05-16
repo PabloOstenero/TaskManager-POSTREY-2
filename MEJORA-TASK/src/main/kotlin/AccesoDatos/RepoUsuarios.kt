@@ -1,8 +1,9 @@
 package AccesoDatos
 import Dominio.Usuario
+import java.io.File
 
 class RepoUsuarios(
-    val usuarios: MutableSet<Usuario> = mutableSetOf<Usuario>()
+    val usuarios: MutableList<Usuario> = mutableListOf()
 ) {
 
     init{
@@ -22,6 +23,10 @@ class RepoUsuarios(
     }
 
     companion object{
-        val rutaFicheroUsuario = "MEJORA-TASK/src/main/kotlin/Datos/Usuarios.txt"
+        val rutaFicheroUsuario =
+            "${System.getProperty("user.dir")}/src/main/kotlin/Datos/Usuarios.txt".replace(
+                "/",
+                File.separator
+            )
     }
 }

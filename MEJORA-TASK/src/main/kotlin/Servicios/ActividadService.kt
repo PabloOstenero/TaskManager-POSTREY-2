@@ -12,12 +12,14 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
 import java.util.Locale
 
-class ActividadService {
-    private val consola = ConsolaUI()
-    private val repo = RepoActividades()
-    private val servicioUsuario = UsuariosService(consola)
-    private val historial = ControlDeHistorial()
-    private val logger = LoggerFactory.getLogger(ActividadService::class.java)
+class ActividadService (
+    private val consola: ConsolaUI = ConsolaUI(),
+    private val repo: RepoActividades = RepoActividades(),
+    private val servicioUsuario: UsuariosService = UsuariosService(consola),
+    private val historial: ControlDeHistorial = ControlDeHistorial(),
+    private val logger: Logger = LoggerFactory.getLogger(ActividadService::class.java))
+{
+
 
     fun gestionarPrograma() {
         try {
@@ -32,8 +34,7 @@ class ActividadService {
         }
     }
 
-
-    private fun agregarSubtarea() {
+    fun agregarSubtarea() {
         try {
             // Listar las tareas disponibles para elegir la tarea madre
             consola.listarTareas(repo.tareas)
@@ -66,8 +67,7 @@ class ActividadService {
         }
     }
 
-
-    private fun usuariosConActividades() {
+    fun usuariosConActividades() {
         try {
             for (usuario in servicioUsuario.usuariosRepo.usuarios) {
                 for (actividad in repo.actividades) {
@@ -110,7 +110,7 @@ class ActividadService {
                 when(opcion){
                     1-> consola.listarTareas(repo.tareas)
                     2-> consola.listarEventos(repo.eventos)
-                    else-> Exception("El valor introducido se sale del rango")
+                    else-> throw Exception("El valor introducido se sale del rango")
                 }
             }catch(e: Exception){
                 println("¡Error! Detalle: $e")
@@ -118,7 +118,7 @@ class ActividadService {
         }while(opcion != 0)
     }
 
-    private fun filtrarPorEstado(){
+    fun filtrarPorEstado(){
         var opcion = -1
 
         do{
@@ -131,16 +131,18 @@ class ActividadService {
 
                 var filtrado: EstadoTarea? = null
 
-                when(opcion){
-                    1-> filtrado = EstadoTarea.ABIERTA
-                    2-> filtrado = EstadoTarea.EN_PROGRESO
-                    3-> filtrado = EstadoTarea.FINALIZADA
-                    else-> Exception("El valor introducido se sale del rango")
-                }
+                if (opcion != 0) {
+                    filtrado = when(opcion){
+                        1-> EstadoTarea.ABIERTA
+                        2-> EstadoTarea.EN_PROGRESO
+                        3-> EstadoTarea.FINALIZADA
+                        else-> throw Exception("El valor introducido se sale del rango")
+                    }
 
-                for(tarea in repo.tareas){
-                    if(tarea.estado == filtrado){
-                        println(tarea.obtenerDetalle())
+                    for(tarea in repo.tareas){
+                        if(tarea.estado == filtrado){
+                            println(tarea.obtenerDetalle())
+                        }
                     }
                 }
 
@@ -193,18 +195,22 @@ class ActividadService {
                 opcion = consola.pedirOpcion("Introduce opción",0,4)
 
                 var filtrado: EtiquetasTareas? = null
-                when(opcion){
-                    1-> filtrado = EtiquetasTareas.URGENTE
-                    2-> filtrado = EtiquetasTareas.SENCILLA
-                    3-> filtrado = EtiquetasTareas.DOCUMENTACION
-                    4-> filtrado = EtiquetasTareas.REVISION
-                    else-> Exception("El valor introducido se sale del rango")
-                }
-                for(tarea in repo.tareas){
-                    if(tarea.etiqueta == filtrado){
-                        println(tarea.obtenerDetalle())
+
+                if (opcion != 0) {
+                    filtrado = when (opcion) {
+                        1 -> EtiquetasTareas.URGENTE
+                        2 -> EtiquetasTareas.SENCILLA
+                        3 -> EtiquetasTareas.DOCUMENTACION
+                        4 -> EtiquetasTareas.REVISION
+                        else -> throw Exception("El valor introducido se sale del rango")
+                    }
+                    for (tarea in repo.tareas) {
+                        if (tarea.etiqueta == filtrado) {
+                            println(tarea.obtenerDetalle())
+                        }
                     }
                 }
+
             }catch(e: Exception){
                 println("¡Error! Detalle: $e")
             }
@@ -257,7 +263,8 @@ class ActividadService {
         val fechaActividad = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd-MM-yyyy"))
         return fechaActividad.month == hoy.month && fechaActividad.year == hoy.year
     }
-    private fun filtrar(){
+
+    fun filtrar(){
         var opcion = -1
         do {
             try {
@@ -270,12 +277,15 @@ class ActividadService {
                 println("0) SALIR")
                 opcion = consola.pedirOpcion(">> ",0,5)
 
-                when(opcion){
-                    1-> filtradoPorTipo()
-                    2-> filtrarPorEstado()
-                    3-> filtradoPorEtiquetas()
-                    4-> filtradoPorUsuarios()
-                    5-> filtradoPorFechas()
+                if (opcion != 0) {
+                    when(opcion){
+                        1-> filtradoPorTipo()
+                        2-> filtrarPorEstado()
+                        3-> filtradoPorEtiquetas()
+                        4-> filtradoPorUsuarios()
+                        5-> filtradoPorFechas()
+                        else -> throw Exception("El valor introducido se sale del rango")
+                    }
                 }
             }catch(e: Exception){
                 println("¡Error! Vuelve a introducir Detalle: $e")

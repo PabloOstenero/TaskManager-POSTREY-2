@@ -42,7 +42,7 @@ class Evento private constructor(
     }
 
     init{
-        require(!ubicacion.isEmpty()){"¡La ubicación no puede estar vacía!"}
+        require(ubicacion.isNotEmpty()){"¡La ubicación no puede estar vacía!"}
     }
 
     companion object{
