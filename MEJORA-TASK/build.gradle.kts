@@ -1,5 +1,10 @@
 plugins {
     kotlin("jvm") version "2.0.21"
+    id("io.gitlab.arturbosch.detekt") version "1.23.6"
+}
+
+detekt {
+    buildUponDefaultConfig = true
 }
 
 group = "es.prog2425.calcprueba"
