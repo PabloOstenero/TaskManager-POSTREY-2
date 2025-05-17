@@ -112,3 +112,14 @@ Así quedaría el código después de la corrección:
 
 Al cambiar esto, se consigue saber bien que error se está capturando y se puede manejar de una forma más adecuada. En este caso, he cambiado el error genérico de la función agregarHistorial de la clase ControlDeHistorial.
 
+[Commit después de solucionar error TooGenericExceptionCaught](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/e32fd61bb7bd3e6fe771456c9cc92ab1266a55d6)
+
+### ERROR 6: `NewLineAtEndOfFile`
+
+![Error_NewLineAtEndOfFile.png](IMAGENES/LINTING/Error_NewLineAtEndOfFile.png)
+
+[Commit antes de solucionar error NewLineAtEndOfFile](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/e32fd61bb7bd3e6fe771456c9cc92ab1266a55d6)
+
+Este error lo he incluido ya que ocurre en la gran mayoría de los archivos del proyecto. Este error se debe a que no hay un salto de línea al final del archivo, lo cual no es un error en si, pero es una convención de Kotlin. Para solucionarlo, se debe añadir un salto de línea al final del archivo.
+No he puesto imagenes de este error ya que no me parece necesario, ya que solo mostraría un salto de línea vacía.
+
