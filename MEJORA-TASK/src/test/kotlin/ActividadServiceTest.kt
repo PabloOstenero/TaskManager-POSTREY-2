@@ -1,9 +1,19 @@
 import accesoDatos.RepoActividades
-import dominio.*
+import dominio.Tarea
+import dominio.Usuario
+import dominio.EtiquetasTareas
+import dominio.EstadoTarea
+import dominio.Actividad
 import presentacion.ConsolaUI
-import servicios.*
+import servicios.ControlDeHistorial
+import servicios.UsuariosService
+import servicios.ActividadService
+
 import io.kotest.core.spec.style.DescribeSpec
-import io.mockk.*
+import io.mockk.verify
+import io.mockk.mockk
+import io.mockk.every
+import io.mockk.clearAllMocks
 
 class ActividadServiceTest : DescribeSpec({
     val mockRepoActividades = mockk<RepoActividades>(relaxed = true)

@@ -58,3 +58,21 @@ Así quedarían los nombres de los paquetes después de la corrección:
 
 Aparte de cambiar los nombres de los paquetes, también he comprobado que los imports de las clases se hayan actualizado correctamente, así como las rutas donde guardan los archivos de datos.
 
+[Commit después de solucionar error PackageNaming](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/18c1fadefc1decc73229e64a4a245b5aea6b9f2d)
+
+### ERROR 3: `WildcardImport`
+
+![Error_WildcardImport.png](IMAGENES/LISTING/Error_WildcardImport.png)
+
+[Commit antes de solucionar error WildcardImport](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/18c1fadefc1decc73229e64a4a245b5aea6b9f2d)
+
+En este caso, el error se debe a que se están importando todas las clases de un paquete, lo cual no es recomendable ya que puede llevar a confusiones. Para solucionarlo, se deben importar sólo las clases necesarias, con lo cual se consigue una mayor limpieza y claridad en el código además de un menor riesgo de fallos por tener dos funciones con el mismo nombre por ejemplo.
+
+![wildcardImport_antes.png](IMAGENES/LISTING/wildcardImport_antes.png)
+
+Así quedaría el código después de la corrección:
+
+![wildcardImport_despues.png](IMAGENES/LISTING/wildcardImport_despues.png)
+
+En estas imagenes muestro los imports de la clase ActividadService por poner un ejemplo de un archivo con este error. Como se puede comprobar, al cambiar estos imports ahora se puede ver claramente que clases voy a utilizar en dicho archivo. Obviamente este es solo un ejemplo de los que hay, pero he corregido todos los wildcards innecesarios del proyecto.
+

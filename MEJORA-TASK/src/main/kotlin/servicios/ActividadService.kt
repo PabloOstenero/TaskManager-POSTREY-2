@@ -1,8 +1,12 @@
 package servicios
 
-import accesoDatos.*
-import dominio.*
-import presentacion.*
+import accesoDatos.RepoActividades
+import dominio.Tarea
+import dominio.Evento
+import dominio.Actividad
+import dominio.EtiquetasTareas
+import dominio.EstadoTarea
+import presentacion.ConsolaUI
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
