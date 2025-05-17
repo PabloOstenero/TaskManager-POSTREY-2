@@ -3,7 +3,11 @@ import java.io.File
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
-import dominio.*
+import dominio.Actividad
+import dominio.EtiquetasTareas
+import dominio.Evento
+import dominio.Tarea
+import dominio.Usuario
 
 object Utils {
     private val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")

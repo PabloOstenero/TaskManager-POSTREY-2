@@ -76,4 +76,3 @@ Así quedaría el código después de la corrección:
 
 En estas imagenes muestro los imports de la clase ActividadService por poner un ejemplo de un archivo con este error. Como se puede comprobar, al cambiar estos imports ahora se puede ver claramente que clases voy a utilizar en dicho archivo. Obviamente este es solo un ejemplo de los que hay, pero he corregido todos los wildcards innecesarios del proyecto.
 
-[Commit después de solucionar error WildcardImport](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/057d9d15729de6c26a79c443c9ab2d8a97a06fd1)
