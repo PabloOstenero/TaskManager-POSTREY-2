@@ -28,7 +28,7 @@ class RepoActividades(
         tareas.forEach { tareaPrincipal ->
             archivo.appendText("${tareaPrincipal.obtenerDetalle()}\n")
 
-            if (tareaPrincipal is Tarea && tareaPrincipal.subTareas.isNotEmpty()) {
+            if (tareaPrincipal.subTareas.isNotEmpty()) {
                 tareaPrincipal.subTareas.forEach { subTarea ->
                     archivo.appendText("    - ${subTarea.obtenerDetalle()}\n")
                 }
@@ -57,19 +57,23 @@ class RepoActividades(
     private fun cargarActividades() {
         val ficheroActividades = Utils.leerArchivo(RUTA_FICHERO_ACTIVIDADES)
         for (linea in ficheroActividades) {
-            try {
-                val actividad = Utils.deserializarActividad(linea)
-                if (actividad != null && !actividades.contains(actividad)) { // Verificar que no sea null y evitar duplicados
-                    actividades.add(actividad)
+            manejarActividad(linea) // Cargar cada actividad
+        }
+    }
 
-                    when (actividad) {
-                        is Tarea -> tareas.add(actividad)
-                        is Evento -> eventos.add(actividad)
-                    }
+    private fun manejarActividad(linea: String) {
+        try {
+            val actividad = Utils.deserializarActividad(linea)
+            if (actividad != null && !actividades.contains(actividad)) { // Verificar que no sea null y evitar duplicados
+                actividades.add(actividad)
+
+                when (actividad) {
+                    is Tarea -> tareas.add(actividad)
+                    is Evento -> eventos.add(actividad)
                 }
-            } catch (e: Exception) {
-                println("Error al cargar una actividad desde el fichero: ${e.message}")
             }
+        } catch (e: Exception) {
+            println("Error al cargar una actividad desde el fichero: ${e.message}")
         }
     }
 
