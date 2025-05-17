@@ -4,7 +4,7 @@
 En esta actividad vamos a instalar y utilizar Detekt, una herramienta de análisis estático para Kotlin.
 Voy a hacer una guía de como instalarlo y vamos a utilizarlo para encontrar errores en el código del Task Manager.
 
-1. **Instalando Detekt**
+## 1. **Instalando Detekt**
 
 - Para instalar Detekt hay que añadir el plugin en el archivo `build.gradle`:
 
@@ -14,7 +14,7 @@ Voy a hacer una guía de como instalarlo y vamos a utilizarlo para encontrar err
 
 ![detekt_config.png](IMAGENES/LISTING/detekt_config.png)
 
-2. **Ejecutando Detekt**
+## 2. **Ejecutando Detekt**
 
 - Para ejecutar Detekt, sólo tengo que usar el siguiente comando:
 
@@ -24,9 +24,9 @@ Voy a hacer una guía de como instalarlo y vamos a utilizarlo para encontrar err
 
 ![detekt_resumen.png](IMAGENES/LISTING/detekt_resumen.png)
 
-3. **Identificando tipos de errores**
+## 3. **Identificando tipos de errores**
 
-ERROR 1: `NestedBlockDepth`
+### ERROR 1: `NestedBlockDepth`
 
 ![Error_NestedBlockDepth.png](IMAGENES/LISTING/Error_NestedBlockDepth.png)
 
@@ -39,4 +39,22 @@ Este es el commit anterior a la correción del error. En este commit, la funció
 Así quedaría la función cargarActividades después de la corrección:
 
 ![cargarActividades_despues.png](IMAGENES/LISTING/cargarActividades_despues.png)
+
+[Commit después de solucionar error NestedBlockDepth](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/9b3006d397a49fd678232c2d2df18816cde2c1bb)
+
+### ERROR 2: `PackageNaming`
+
+![Error_PackageNaming.png](IMAGENES/LISTING/Error_PackageNaming.png)
+
+[Commit antes de solucionar error PackageNaming](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/9b3006d397a49fd678232c2d2df18816cde2c1bb)
+
+En este caso, el error se debe a que el nombre delos paquetes no siguen la convención de nombres de Kotlin. Para solucionarlo, se debe cambiar la primera letra de los nombres de los paquetes a minúsculas.
+
+![packageNaming_antes.png](IMAGENES/LISTING/packageNaming_antes.png)
+
+Así quedarían los nombres de los paquetes después de la corrección:
+
+![packageNaming_despues.png](IMAGENES/LISTING/packageNaming_despues.png)
+
+Aparte de cambiar los nombres de los paquetes, también he comprobado que los imports de las clases se hayan actualizado correctamente, así como las rutas donde guardan los archivos de datos.
 

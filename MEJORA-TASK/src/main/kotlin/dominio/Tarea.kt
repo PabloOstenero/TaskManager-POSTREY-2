@@ -1,4 +1,4 @@
-package Dominio
+package dominio
 
 class Tarea private constructor(
     descripcion: String,

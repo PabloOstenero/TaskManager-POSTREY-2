@@ -1,8 +1,8 @@
-package Servicios
+package servicios
 
-import AccesoDatos.*
-import Dominio.*
-import Presentacion.*
+import accesoDatos.*
+import dominio.*
+import presentacion.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 

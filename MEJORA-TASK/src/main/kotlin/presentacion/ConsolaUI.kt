@@ -1,13 +1,12 @@
-package Presentacion
+package presentacion
 
-import AccesoDatos.RepoActividades
-import AccesoDatos.RepoUsuarios
-import Dominio.Actividad
-import Dominio.EtiquetasTareas
-import Dominio.Evento
-import Dominio.Tarea
-import Dominio.Usuario
-import Servicios.ActividadService
+import accesoDatos.RepoActividades
+import accesoDatos.RepoUsuarios
+import dominio.Actividad
+import dominio.EtiquetasTareas
+import dominio.Evento
+import dominio.Tarea
+import dominio.Usuario
 
 /**
  * Esta clase hereda los metodos de consola para desarrolarlos.

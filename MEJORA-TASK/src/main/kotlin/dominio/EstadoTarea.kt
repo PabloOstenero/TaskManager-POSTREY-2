@@ -1,4 +1,4 @@
-package Dominio
+package dominio
 
 /**
  * Enum class que contiene los estados en los que se puede encontrar la tarea

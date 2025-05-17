@@ -1,4 +1,4 @@
-package Servicios
+package servicios
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -20,6 +20,6 @@ open class ControlDeHistorial {
     }
 
     companion object {
-        const val RUTA_HISTORIAL = "MEJORA-TASK/src/main/kotlin/Datos/Historial.txt"
+        const val RUTA_HISTORIAL = "MEJORA-TASK/src/main/kotlin/datos/Historial.txt"
     }
 }

@@ -1,10 +1,10 @@
-package AccesoDatos
+package accesoDatos
 
-import Dominio.Actividad
-import Dominio.EstadoTarea
-import Dominio.Evento
-import Dominio.Tarea
-import Servicios.ControlDeHistorial
+import dominio.Actividad
+import dominio.EstadoTarea
+import dominio.Evento
+import dominio.Tarea
+import servicios.ControlDeHistorial
 import java.io.File
 
 class RepoActividades(
@@ -79,7 +79,7 @@ class RepoActividades(
 
     companion object {
         val RUTA_FICHERO_ACTIVIDADES =
-            "${System.getProperty("user.dir")}/src/main/kotlin/Datos/Actividades.txt".replace(
+            "${System.getProperty("user.dir")}/src/main/kotlin/datos/Actividades.txt".replace(
                 "/",
                 File.separator
             )

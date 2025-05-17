@@ -1,6 +1,6 @@
-package Dominio
+package dominio
 
-import AccesoDatos.RepoActividades
+import accesoDatos.RepoActividades
 
 class Usuario private constructor(
     val nombre: String = "Anónimo"

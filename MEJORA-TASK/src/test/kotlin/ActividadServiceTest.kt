@@ -1,7 +1,7 @@
-import AccesoDatos.RepoActividades
-import Dominio.*
-import Presentacion.ConsolaUI
-import Servicios.*
+import accesoDatos.RepoActividades
+import dominio.*
+import presentacion.ConsolaUI
+import servicios.*
 import io.kotest.core.spec.style.DescribeSpec
 import io.mockk.*
 

@@ -1,4 +1,4 @@
-package Dominio
+package dominio
 
 import java.io.File
 
@@ -17,7 +17,7 @@ abstract class CalculoId {
         private val fechasUnicas = mutableListOf<String>()
         private val mapaIdsFechas: MutableMap<String, Int> = mutableMapOf()
         val RUTA_FICHERO_FECHAS =
-            "${System.getProperty("user.dir")}/src/main/kotlin/Datos/Fechas.txt".replace(
+            "${System.getProperty("user.dir")}/src/main/kotlin/datos/Fechas.txt".replace(
                 "/",
                 File.separator
             )

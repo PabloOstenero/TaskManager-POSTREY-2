@@ -1,5 +1,5 @@
-package AccesoDatos
-import Dominio.Usuario
+package accesoDatos
+import dominio.Usuario
 import java.io.File
 
 class RepoUsuarios(
@@ -24,7 +24,7 @@ class RepoUsuarios(
 
     companion object{
         val rutaFicheroUsuario =
-            "${System.getProperty("user.dir")}/src/main/kotlin/Datos/Usuarios.txt".replace(
+            "${System.getProperty("user.dir")}/src/main/kotlin/datos/Usuarios.txt".replace(
                 "/",
                 File.separator
             )

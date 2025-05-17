@@ -1,4 +1,4 @@
-package Dominio
+package dominio
 
 /**
  * Clase evento con constructor privado

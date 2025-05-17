@@ -1,9 +1,9 @@
-import AccesoDatos.RepoActividades
+import accesoDatos.RepoActividades
 import java.io.File
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
-import Dominio.*
+import dominio.*
 
 object Utils {
     private val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
