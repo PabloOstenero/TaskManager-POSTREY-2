@@ -94,3 +94,21 @@ Así quedaría el código después de la corrección:
 
 Al cambiar esto, he tenido que comprobar donde se usaba dicha clase para poder eliminar la variable a la hora de instanciarla.
 
+[Commit después de solucionar error UnusedPrivateProperty](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/6724f1a2a2c42ed7d3c4b141964e29fd7e4a1034)
+
+### ERROR 5: `TooGenericExceptionCaught`
+
+![Error_TooGenericExceptionCaught.png](IMAGENES/LINTING/Error_TooGenericExceptionCaught.png)
+
+[Commit antes de solucionar error TooGenericExceptionCaught](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/6724f1a2a2c42ed7d3c4b141964e29fd7e4a1034)
+
+En este caso, el error se debe a que se están capturando excepciones genéricas, lo cual no es recomendable ya que no se sabe exactamente que error se está capturando. Para solucionarlo, se deben capturar excepciones más específicas.
+
+![tooGenericExceptionCaught_antes.png](IMAGENES/LINTING/tooGenericExceptionCaught_antes.png)
+
+Así quedaría el código después de la corrección:
+
+![tooGenericExceptionCaught_despues.png](IMAGENES/LINTING/tooGenericExceptionCaught_despues.png)
+
+Al cambiar esto, se consigue saber bien que error se está capturando y se puede manejar de una forma más adecuada. En este caso, he cambiado el error genérico de la función agregarHistorial de la clase ControlDeHistorial.
+

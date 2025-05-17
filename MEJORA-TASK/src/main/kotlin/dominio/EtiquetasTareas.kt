@@ -1,10 +1,10 @@
 package dominio
 
-enum class EtiquetasTareas(desc:String) {
-    URGENTE("Urgente"),
-    DOCUMENTACION("Documentación"),
-    REVISION("Revisión"),
-    SENCILLA("Sencilla");
+enum class EtiquetasTareas {
+    URGENTE,
+    DOCUMENTACION,
+    REVISION,
+    SENCILLA;
 
     companion object {
         fun getEtiqueta(eti:String): EtiquetasTareas?{

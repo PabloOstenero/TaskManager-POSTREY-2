@@ -14,7 +14,7 @@ open class ControlDeHistorial {
         logger.info(log) // Registrar en el logger
         try {
             File(RUTA_HISTORIAL).appendText("$log\n")
-        } catch (e: Exception) {
+        } catch (e: NullPointerException) {
             logger.error("Error al escribir en el historial: ${e.message}", e)
         }
     }
