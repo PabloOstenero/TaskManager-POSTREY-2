@@ -76,3 +76,21 @@ Así quedaría el código después de la corrección:
 
 En estas imagenes muestro los imports de la clase ActividadService por poner un ejemplo de un archivo con este error. Como se puede comprobar, al cambiar estos imports ahora se puede ver claramente que clases voy a utilizar en dicho archivo. Obviamente este es solo un ejemplo de los que hay, pero he corregido todos los wildcards innecesarios del proyecto.
 
+[Commit después de solucionar error WildcardImport](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/ab2f041a9023a54ed5eeaef1e9c03a93fa3de63d)
+
+### ERROR 4: `UnusedPrivateProperty`
+
+![Error_UnusedPrivateProperty.png](IMAGENES/LINTING/Error_UnusedPrivateProperty.png)
+
+[Commit antes de solucionar error UnusedPrivateProperty](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/ab2f041a9023a54ed5eeaef1e9c03a93fa3de63d)
+
+En este caso, el error se debe a que hay propiedades privadas que no se utilizan en el código, volviendo el código más confuso y sin sentido. Para solucionarlo, se deben eliminar estas propiedades innecesarias.
+
+![unusedPrivateProperty_antes.png](IMAGENES/LINTING/unusedPrivateProperty_antes.png)
+
+Así quedaría el código después de la corrección:
+
+![unusedPrivateProperty_despues.png](IMAGENES/LINTING/unusedPrivateProperty_despues.png)
+
+Al cambiar esto, he tenido que comprobar donde se usaba dicha clase para poder eliminar la variable a la hora de instanciarla.
+

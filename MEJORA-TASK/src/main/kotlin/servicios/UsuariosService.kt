@@ -1,11 +1,7 @@
 package servicios
 
 import accesoDatos.RepoUsuarios
-import presentacion.ConsolaUI
 
-class UsuariosService(
-    consola: ConsolaUI
-) {
+class UsuariosService {
     var usuariosRepo = RepoUsuarios()
-
 }

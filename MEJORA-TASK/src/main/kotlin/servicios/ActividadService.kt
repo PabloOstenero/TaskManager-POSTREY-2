@@ -19,7 +19,7 @@ import java.util.Locale
 class ActividadService (
     private val consola: ConsolaUI = ConsolaUI(),
     private val repo: RepoActividades = RepoActividades(),
-    private val servicioUsuario: UsuariosService = UsuariosService(consola),
+    private val servicioUsuario: UsuariosService = UsuariosService(),
     private val historial: ControlDeHistorial = ControlDeHistorial(),
     private val logger: Logger = LoggerFactory.getLogger(ActividadService::class.java))
 {
