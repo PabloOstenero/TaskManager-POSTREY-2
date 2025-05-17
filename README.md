@@ -123,3 +123,10 @@ Al cambiar esto, se consigue saber bien que error se está capturando y se puede
 Este error lo he incluido ya que ocurre en la gran mayoría de los archivos del proyecto. Este error se debe a que no hay un salto de línea al final del archivo, lo cual no es un error en si, pero es una convención de Kotlin. Para solucionarlo, se debe añadir un salto de línea al final del archivo.
 No he puesto imagenes de este error ya que no me parece necesario, ya que solo mostraría un salto de línea vacía.
 
+[Commit después de solucionar error NewLineAtEndOfFile](https://github.com/PabloOstenero/TaskManager-POSTREY-2/commit/74a42908dc66d78bf7e455f5f18a3ddd301e7d6d)
+
+## 4. **Opción de configuración distinta de la predeterminada**
+
+![detekt_configuracion.png](IMAGENES/LINTING/detekt_config2.png)
+
+Gracias a esta línea `baseline = file("config/detekt/baseline.xml")` se consigue que los errores que ya se hayan mostrado antes no se vuelvan a mostrar, así deja más claridad a la hora de ver los errores nuevos que surjan en el código al intentar corregirlo.

@@ -5,6 +5,7 @@ plugins {
 
 detekt {
     buildUponDefaultConfig = true
+    baseline = file("config/detekt/baseline.xml")
 }
 
 group = "es.prog2425.calcprueba"
