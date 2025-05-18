@@ -48,3 +48,56 @@ Para el problema de Redundant qualifier name, vamos a quitar la referencia a la 
 Para el problema de Class member can have 'private' visibility, vamos a cambiar la visibilidad de las variables y funciones que se usan en las clases pero no fuera de ellas a private.
 
 ![Class_member_can_have_private_visibility.png](IMAGENES/CODE%20SMELL/Class_member_can_have_private_visibility.png)
+
+## 3. **Desarrollo de pruebas**
+
+He creado las pruebas unitarias usando esta vez JUnit, ya que es como se pide. He probado las clases cambiadas por la refactorización de esta práctica, comprobando que cambiar el código no ha afectado a la lógica del mismo.
+
+Este es el resultado de las pruebas unitarias después de la refactorización, después de cada imagen voy a dejar un enlace a la clase que corresponde y al test:
+
+![EstadoTareaTest_resultados.png](IMAGENES/CODE%20SMELL/EstadoTareaTest_resultados.png)
+
+[EstadoTarea]()
+
+[EstadoTareaTest]()
+
+![UtilsTest_resultados.png](IMAGENES/CODE%20SMELL/UtilsTest_resultados.png)
+
+[Utils]()
+
+[UtilsTest]()
+
+![ActividadTest_resultados.png](IMAGENES/CODE%20SMELL/ActividadTest_resultados.png)
+
+[Actividad]()
+
+[ActividadTest]()
+
+Como se puede comprobar en las imágenes, todas las clases han pasado las pruebas correctamente, por lo que los cambios realizados no han afectado a la lógica y funcionan igual.
+
+## 4. **Respuesta a las preguntas**
+
+[1]
+1.a **¿Qué code smell y patrones de refactorización has aplicado?**
+
+He eliminado la función obetenerDesc() de la clase Actividad, ya que no se usaba en ningún sitio. Este es un code smell de Unused Symbol, y el patrón de refactorización que he aplicado es Safe Delete.
+
+He eliminado el nombre de la clase EstadoTarea en la función getEstado, ya que al estar en la misma clase no le hace falta. Este es un code smell de Redundant qualifier name, y el patrón de refactorización que he aplicado es Remove redundant qualifier.
+
+He cambiado la visibilidad de las variables y funciones que se usan en las clases pero no fuera de ellas a private. Este es un code smell de Class member can have 'private' visibility, y el patrón de refactorización que he aplicado es Change member visibility.
+
+1.b **Teniendo en cuenta aquella funcionalidad que tiene pruebas unitarias, selecciona un patrón de refactorización de los que has aplicado y que están cubierto por los test unitarios. ¿Porque mejora o no mejora tu código? Asegurate de poner enlaces a tu código**
+
+Voy a seleccionar el patrón de Change member visibility, el cual mejora el código porque mejora la encapsulación de las variables y funciones, no permitiendo que cualquier otra clase lo use. Gracias a esto, el código es más seguro, ya que, por ejemplo si se cambia el nombre de una variable, no afecta a otras clases que no deberían usarla.
+
+
+[2]
+2.a Describe el proceso que sigues para asegurarte que la refactorización no afecta a código que ya tenias desarrollado.
+
+Para asegurarme de que la refactorización no afecta al código, pruebo el programa otra vez para que no me dé errores, además de hacer pruebas unitarias para probar que todo funciona correctamente.
+
+
+[3]
+3.a ¿Que funcionalidad del IDE has usado para aplicar la refactorización seleccionada? Si es necesario, añade capturas de pantalla para identificar la funcionalidad.
+
+Como ya pone en el primer apartado de este documento, he usado la opción de Refactor del IDE, que se puede encontrar haciendo clic derecho en la línea donde se encuentra el problema o en el menú de la parte superior de la pantalla. En este caso, he usado la opción de Change member visibility para cambiar la visibilidad de las variables y funciones que no se usan fuera de su clase a private.
