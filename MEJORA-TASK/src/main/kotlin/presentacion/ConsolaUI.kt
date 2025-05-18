@@ -12,7 +12,6 @@ import dominio.Usuario
  * Esta clase hereda los metodos de consola para desarrolarlos.
  * Una vez desarrollado los metodos, estos pasaran a usarse por el servicio heredando esta clase.
  */
-@Suppress("KDocUnresolvedReference", "KDocUnresolvedReference")
 class ConsolaUI: Consola {
 
     override fun mostrarMenu() {

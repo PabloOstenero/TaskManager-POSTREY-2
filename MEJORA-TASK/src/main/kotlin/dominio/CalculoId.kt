@@ -1,10 +1,7 @@
-@file:Suppress("KDocUnresolvedReference")
-
 package dominio
 
 import java.io.File
 
-@Suppress("KDocUnresolvedReference", "KDocUnresolvedReference", "KDocUnresolvedReference")
 abstract class CalculoId {
     /**
      * Genera un identificador único basado en:
