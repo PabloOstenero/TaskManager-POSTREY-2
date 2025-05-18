@@ -16,6 +16,18 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
 import java.util.Locale
 
+/**
+ * Clase que gestiona las actividades del programa.
+ * Permite añadir, listar, cambiar el estado de las actividades y filtrar por diferentes criterios.
+ * Esta clase también muestra los resúmenes de las actividades y gestiona la creación de subtareas.
+ * Permite la interacción con el usuario a través de la consola.
+ *
+ * @param consola ConsolaUI para la interacción con el usuario.
+ * @param repo RepoActividades para gestionar las actividades.
+ * @param servicioUsuario UsuariosService para gestionar los usuarios.
+ * @param historial ControlDeHistorial para gestionar el historial de actividades.
+ * @param logger Logger para registrar eventos y errores.
+ * */
 class ActividadService (
     private val consola: ConsolaUI = ConsolaUI(),
     private val repo: RepoActividades = RepoActividades(),
@@ -24,7 +36,9 @@ class ActividadService (
     private val logger: Logger = LoggerFactory.getLogger(ActividadService::class.java))
 {
 
-
+    /**
+     * Método principal que gestiona el programa. Muestra el menú y permite al usuario elegir opciones.
+     * */
     fun gestionarPrograma() {
         try {
             usuariosConActividades()
@@ -38,6 +52,12 @@ class ActividadService (
         }
     }
 
+    /**
+     * Método que permite agregar una subtarea a una tarea madre.
+     * Primero lista las tareas disponibles y luego pide al usuario que seleccione la tarea madre por ID.
+     * Luego crea la subtarea y la asigna a la tarea madre.
+     * Finalmente actualiza el fichero para incluir la tarea madre con sus subtareas.
+     * */
     fun agregarSubtarea() {
         try {
             // Listar las tareas disponibles para elegir la tarea madre
@@ -71,6 +91,10 @@ class ActividadService (
         }
     }
 
+    /**
+     * Método que asocia los usuarios con sus respectivas actividades.
+     * Recorre todos los usuarios y actividades, y si la actividad pertenece al usuario, la añade a su repositorio de actividades.
+     * */
     fun usuariosConActividades() {
         try {
             for (usuario in servicioUsuario.usuariosRepo.usuarios) {
@@ -90,6 +114,10 @@ class ActividadService (
         }
     }
 
+    /**
+     * Método que cambia el estado de una tarea.
+     * Pide al usuario que introduzca el nuevo estado y actualiza la tarea y su subtarea.
+     * */
     private fun cambiarEstado(tarea: Tarea) {
         val estadoNuevo = consola.pedirInfo("CAMBIE EL ESTADO DE LA TAREA: ABIERTA, EN_PROGRESO, FINALIZADA")
         val estado = EstadoTarea.getEstado(estadoNuevo)
@@ -102,6 +130,10 @@ class ActividadService (
         }
     }
 
+    /**
+     * Método que filtra las actividades por tipo (Tarea o Evento).
+     * Muestra un menú al usuario para que elija qué tipo de actividad desea ver.
+     * */
     private fun filtradoPorTipo(){
         var opcion = -1
 
@@ -122,6 +154,10 @@ class ActividadService (
         }while(opcion != 0)
     }
 
+    /**
+     * Método que filtra las tareas por su estado (Abierta, En Progreso, Finalizada).
+     * Muestra un menú al usuario para que elija qué estado desea ver.
+     * */
     fun filtrarPorEstado(){
         var opcion = -1
 
@@ -133,7 +169,7 @@ class ActividadService (
                 println("0) SALIR")
                 opcion = consola.pedirOpcion("Introduce opción",0,3)
 
-                var filtrado: EstadoTarea? = null
+                var filtrado: EstadoTarea?
 
                 if (opcion != 0) {
                     filtrado = when(opcion){
@@ -156,6 +192,11 @@ class ActividadService (
         }while(opcion != 0)
     }
 
+    /**
+     * Método que filtra las actividades por usuario.
+     * Pide al usuario que introduzca el nombre del usuario y muestra las actividades asociadas a ese usuario.
+     * Si no se encuentra el usuario, se le pregunta si desea continuar buscando.
+     * */
     private fun filtradoPorUsuarios(){
         var seguir = true
         do{
@@ -186,6 +227,11 @@ class ActividadService (
             }
         }while(seguir)
     }
+
+    /**
+     * Método que filtra las tareas por etiquetas (Urgente, Sencilla, Documentación, Revisión).
+     * Muestra un menú al usuario para que elija qué etiqueta desea ver.
+     * */
     private fun filtradoPorEtiquetas(){
         var opcion = -1
 
@@ -198,7 +244,7 @@ class ActividadService (
                 println("0) SALIR")
                 opcion = consola.pedirOpcion("Introduce opción",0,4)
 
-                var filtrado: EtiquetasTareas? = null
+                var filtrado: EtiquetasTareas?
 
                 if (opcion != 0) {
                     filtrado = when (opcion) {
@@ -221,6 +267,10 @@ class ActividadService (
         }while(opcion != 0)
     }
 
+    /**
+     * Método que filtra las actividades por fecha (hoy, mañana, esta semana, este mes).
+     * Muestra un menú al usuario para que elija qué tipo de filtro desea aplicar.
+     * */
     private fun filtradoPorFechas() {
         var opcion: Int
         do {
@@ -244,6 +294,10 @@ class ActividadService (
         } while (opcion != 0)
     }
 
+    /**
+     * Método que filtra las actividades según una condición dada.
+     * Si no se encuentran actividades que coincidan con la condición, se muestra un mensaje al usuario.
+     * */
     private fun filtrarActividades(condicion: (Actividad) -> Boolean) {
         val actividadesFiltradas = repo.actividades.filter(condicion)
         if (actividadesFiltradas.isEmpty()) {
@@ -254,6 +308,11 @@ class ActividadService (
         }
     }
 
+    /**
+     * Método que verifica si una fecha está dentro de la semana actual.
+     * @param fecha Fecha a verificar.
+     * @return true si la fecha está dentro de la semana actual, false en caso contrario.
+     * */
     private fun fechaDentroDeSemana(fecha: String): Boolean {
         val hoy = LocalDate.now()
         val inicioSemana = hoy.with(DayOfWeek.MONDAY)
@@ -262,12 +321,21 @@ class ActividadService (
         return !fechaActividad.isBefore(inicioSemana) && !fechaActividad.isAfter(finSemana)
     }
 
+    /**
+     * Método que verifica si una fecha está dentro del mes actual.
+     * @param fecha Fecha a verificar.
+     * @return true si la fecha está dentro del mes actual, false en caso contrario.
+     * */
     private fun fechaDentroDeMes(fecha: String): Boolean {
         val hoy = LocalDate.now()
         val fechaActividad = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd-MM-yyyy"))
         return fechaActividad.month == hoy.month && fechaActividad.year == hoy.year
     }
 
+    /**
+     * Método que filtra las actividades según el tipo de filtrado elegido por el usuario.
+     * Muestra un menú al usuario para que elija qué tipo de filtrado desea aplicar.
+     * */
     fun filtrar(){
         var opcion = -1
         do {
@@ -297,6 +365,11 @@ class ActividadService (
         }while(opcion != 0)
     }
 
+    /**
+     * Método que muestra un resumen de las actividades.
+     * Muestra el total de tareas, eventos y actividades realizadas.
+     * También muestra el número de actividades para hoy, mañana, esta semana y este mes.
+     * */
     private fun resumen() {
         val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
         val hoy = LocalDate.now()
@@ -334,6 +407,10 @@ class ActividadService (
         historial.agregarHistorial("Se ha mirado el resumen del programa")
     }
 
+    /**
+     * Método que gestiona la opción elegida por el usuario en el menú principal.
+     * Llama a los métodos correspondientes según la opción elegida.
+     * */
     private fun gestionarOpcion(opcion: Int) {
         when (opcion) {
             1 -> anadirActividad()
@@ -345,6 +422,10 @@ class ActividadService (
         }
     }
 
+    /**
+     * Método que añade una actividad (Tarea o Evento) al repositorio de actividades.
+     * Pide al usuario que elija qué tipo de actividad desea crear y llama al método correspondiente para crearla.
+     * */
     private fun anadirActividad() {
         val opcion = consola.pedirOpcion("¿Qué quieres crear?\n1) Tarea\n2) Evento\n0) Cancelar", 0, 2)
         if (opcion == 0) return
@@ -360,12 +441,20 @@ class ActividadService (
         }
     }
 
+    /**
+     * Método que lista todas las actividades disponibles en el repositorio.
+     * Elimina duplicados y muestra la lista al usuario.
+     * */
     private fun listarActividades() {
         val actividadesUnicas = repo.actividades.distinct() // Eliminar duplicados
         consola.listarActividades(actividadesUnicas.toMutableList())
         historial.agregarHistorial("Se listan todas las actividades")
     }
 
+    /**
+     * Método que pide al usuario el ID de una tarea y devuelve la tarea correspondiente.
+     * Si no se encuentra la tarea, se le pide al usuario que lo intente de nuevo.
+     * */
     private fun pedirIdTarea(): Tarea {
         var tareaEncontrada: Tarea? = null
         var tareaValida = false
@@ -384,6 +473,10 @@ class ActividadService (
     }
 
     companion object {
+        /**
+         * Método principal que inicia el programa.
+         * Crea una instancia de ActividadService y llama al método gestionarPrograma.
+         * */
         fun iniciarPrograma() {
             ActividadService().gestionarPrograma()
         }

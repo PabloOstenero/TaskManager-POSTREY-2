@@ -7,17 +7,32 @@ import dominio.Tarea
 import servicios.ControlDeHistorial
 import java.io.File
 
+/**
+ * Esta clase sirve para poder gestionar las actividades, dando opciones para añadir actividades y guardarlas en un fichero o
+ * cargar las actividades de dicho fichero, el cual se encuentra en la ruta descrita por la variable RUTA_FICHERO_ACTIVIDADES.
+ *
+ * También permite cambiar el estado de una tarea.
+ * */
 class RepoActividades(
     override val actividades: MutableList<Actividad> = mutableListOf(),
     override val tareas: MutableList<Tarea> = mutableListOf(),
     override val eventos: MutableList<Evento> = mutableListOf()
 ) : IActividadRepository {
 
+    /**
+     * Al instanciar la clase, se cargan las actividades del fichero de texto.
+     * */
     init {
         cargarActividades()
     }
 
-
+    /**
+     * Esta función permite cambiar el estado de una tarea y actualizar el fichero de texto.
+     *
+     * @param tarea Tarea a la que se le quiere cambiar el estado.
+     * @param historial Control de historial para registrar el cambio de estado.
+     * @param estadoTarea Nuevo estado de la tarea.
+     * */
     fun cambiarEstado(tarea: Tarea, historial: ControlDeHistorial, estadoTarea: EstadoTarea) {
         val id = tarea.getIdActividad()
         tarea.estado = estadoTarea
@@ -39,6 +54,11 @@ class RepoActividades(
         historial.agregarHistorial("Tarea con id $id con estado cambiado a $estadoTarea con éxito")
     }
 
+    /**
+     * Esta función añade una actividad a la lista de actividades y la guarda en el fichero de texto.
+     *
+     * @param actividad Actividad a añadir.
+     * */
     fun aniadirActividad(actividad: Actividad) {
         if (!actividades.contains(actividad)) { // Evitar duplicados en la lista de actividades
             actividades.add(actividad)
@@ -54,6 +74,9 @@ class RepoActividades(
         }
     }
 
+    /**
+     * Esta función carga las actividades del fichero de texto y las añade a la lista de actividades.
+     * */
     private fun cargarActividades() {
         val ficheroActividades = Utils.leerArchivo(RUTA_FICHERO_ACTIVIDADES)
         for (linea in ficheroActividades) {
@@ -61,6 +84,11 @@ class RepoActividades(
         }
     }
 
+    /**
+     * Esta función maneja la carga de una actividad desde el fichero de texto.
+     *
+     * @param linea Línea del fichero que contiene la actividad.
+     * */
     private fun manejarActividad(linea: String) {
         try {
             val actividad = Utils.deserializarActividad(linea)
@@ -78,6 +106,9 @@ class RepoActividades(
     }
 
     companion object {
+        /**
+         * Esta variable contiene la ruta del fichero de texto donde se guardan las actividades.
+         * */
         val RUTA_FICHERO_ACTIVIDADES =
             "${System.getProperty("user.dir")}/src/main/kotlin/datos/Actividades.txt".replace(
                 "/",
