@@ -57,21 +57,21 @@ Este es el resultado de las pruebas unitarias después de la refactorización, d
 
 ![EstadoTareaTest_resultados.png](IMAGENES/CODE%20SMELL/EstadoTareaTest_resultados.png)
 
-[EstadoTarea]()
+[EstadoTarea](https://github.com/PabloOstenero/TaskManager-POSTREY-2/blob/P4.3.2-POR/MEJORA-TASK/src/main/kotlin/dominio/EstadoTarea.kt)
 
-[EstadoTareaTest]()
+[EstadoTareaTest](https://github.com/PabloOstenero/TaskManager-POSTREY-2/blob/P4.3.2-POR/MEJORA-TASK/src/test/kotlin/EstadoTareaTest.kt)
 
 ![UtilsTest_resultados.png](IMAGENES/CODE%20SMELL/UtilsTest_resultados.png)
 
-[Utils]()
+[Utils](https://github.com/PabloOstenero/TaskManager-POSTREY-2/blob/P4.3.2-POR/MEJORA-TASK/src/main/kotlin/Utils.kt)
 
-[UtilsTest]()
+[UtilsTest](https://github.com/PabloOstenero/TaskManager-POSTREY-2/blob/P4.3.2-POR/MEJORA-TASK/src/test/kotlin/UtilsTest.kt)
 
 ![ActividadTest_resultados.png](IMAGENES/CODE%20SMELL/ActividadTest_resultados.png)
 
-[Actividad]()
+[Actividad](https://github.com/PabloOstenero/TaskManager-POSTREY-2/blob/P4.3.2-POR/MEJORA-TASK/src/main/kotlin/dominio/Actividad.kt)
 
-[ActividadTest]()
+[ActividadTest](https://github.com/PabloOstenero/TaskManager-POSTREY-2/blob/P4.3.2-POR/MEJORA-TASK/src/test/kotlin/ActividadTest.kt)
 
 Como se puede comprobar en las imágenes, todas las clases han pasado las pruebas correctamente, por lo que los cambios realizados no han afectado a la lógica y funcionan igual.
 
