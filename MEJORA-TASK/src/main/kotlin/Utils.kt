@@ -29,7 +29,7 @@ object Utils {
         return Usuario.creaInstancia(nombreUsuario)
     }
 
-    fun esEtiqueta(etiqueta: String): Boolean {
+    private fun esEtiqueta(etiqueta: String): Boolean {
         return EtiquetasTareas.getEtiqueta(etiqueta) != null
     }
 

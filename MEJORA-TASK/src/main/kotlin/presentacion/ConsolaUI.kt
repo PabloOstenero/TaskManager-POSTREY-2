@@ -12,6 +12,7 @@ import dominio.Usuario
  * Esta clase hereda los metodos de consola para desarrolarlos.
  * Una vez desarrollado los metodos, estos pasaran a usarse por el servicio heredando esta clase.
  */
+@Suppress("KDocUnresolvedReference", "KDocUnresolvedReference")
 class ConsolaUI: Consola {
 
     override fun mostrarMenu() {
@@ -33,7 +34,7 @@ class ConsolaUI: Consola {
      * @return Devuelve la información puesta por el usuario
      */
 
-    fun pedirUsuario(repo: RepoUsuarios):Usuario{
+    private fun pedirUsuario(repo: RepoUsuarios):Usuario{
         val usuarioNombre = pedirInfo("Introduzca el usuario al que asignar Actividad")
         var encontrado = false
         var usuarioPedido:Usuario? = null
@@ -77,7 +78,7 @@ class ConsolaUI: Consola {
         for(etiqueta in EtiquetasTareas.entries){
             println(etiqueta)
         }
-        var etiqueta: EtiquetasTareas? = null
+        var etiqueta: EtiquetasTareas?
         do {
             println("Introduzca una de las etiquetas >> ")
             etiqueta = EtiquetasTareas.getEtiqueta(readln().trim())
@@ -90,7 +91,7 @@ class ConsolaUI: Consola {
     }
 
     fun listarTareas(tareas: MutableList<Tarea>) {
-        var contador = -1
+        var contador: Int
         for (tarea in tareas) {
             contador = 0
             println(tarea.obtenerDetalle())
@@ -151,7 +152,7 @@ class ConsolaUI: Consola {
      */
     override fun pedirOpcion(msj: String, min: Int, max: Int):Int {
         println(msj)
-        var opcion:Int? = null
+        var opcion:Int?
         do{
             try{
                 print(">>")
@@ -169,8 +170,7 @@ class ConsolaUI: Consola {
 
     fun preguntarSeguir(): Boolean {
         val opciones = mapOf("S" to true, "N" to false)
-        var seguir: Boolean? = null
-
+        var seguir: Boolean?
         do {
             println("¿Deseas seguir? S/N >> ")
             val siono = pedirInfo("").trim().uppercase()

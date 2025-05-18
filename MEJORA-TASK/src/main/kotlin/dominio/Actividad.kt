@@ -15,7 +15,6 @@ abstract class Actividad(
     open var fecha = fechaCreacion
     protected open var id: String = "${CalculoId.generarId(fechaCreacion)}"
 
-    open fun obtenerDesc() = descripcion
     open fun getIdActividad(): String = id
     open fun obtenerUsuario(): String = usuario
     open fun obtenerDetalle(): String = "$usuario;$id;$descripcion;$fechaCreacion"

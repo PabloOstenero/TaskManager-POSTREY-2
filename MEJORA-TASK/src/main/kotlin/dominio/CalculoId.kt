@@ -1,7 +1,10 @@
+@file:Suppress("KDocUnresolvedReference")
+
 package dominio
 
 import java.io.File
 
+@Suppress("KDocUnresolvedReference", "KDocUnresolvedReference", "KDocUnresolvedReference")
 abstract class CalculoId {
     /**
      * Genera un identificador único basado en:
@@ -16,7 +19,7 @@ abstract class CalculoId {
     companion object {
         private val fechasUnicas = mutableListOf<String>()
         private val mapaIdsFechas: MutableMap<String, Int> = mutableMapOf()
-        val RUTA_FICHERO_FECHAS =
+        private val RUTA_FICHERO_FECHAS =
             "${System.getProperty("user.dir")}/src/main/kotlin/datos/Fechas.txt".replace(
                 "/",
                 File.separator

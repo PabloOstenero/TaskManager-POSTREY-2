@@ -1,22 +1,21 @@
 package dominio
 
 /**
- * Enum class que contiene los estados en los que se puede encontrar la tarea
- * La tarea puede ser ABIERTA o CERRADA
- * @param e-> Para poder poner un mensaje personalizado al instanciar
+ * Enum class que contiene los estados en los que se puede encontrar la tarea.
+ * La tarea puede ser ABIERTA, EN_PROGRESO o FINALIZADA.
  */
-enum class EstadoTarea(e:String) {
-    ABIERTA("ABIERTA"),
-    EN_PROGRESO("EN_PROGRESO"),
-    FINALIZADA("FINALIZADA");
+enum class EstadoTarea {
+    ABIERTA,
+    EN_PROGRESO,
+    FINALIZADA;
 
     companion object{
         fun getEstado(estado:String): EstadoTarea?{
             return when(estado.uppercase()){
-                "ABIERTA"-> EstadoTarea.ABIERTA
-                "FINALIZADA"-> EstadoTarea.FINALIZADA
-                "EN_PROGRESO"-> EstadoTarea.EN_PROGRESO
-                "EN PROGRESO"-> EstadoTarea.EN_PROGRESO
+                "ABIERTA"-> ABIERTA
+                "FINALIZADA"-> FINALIZADA
+                "EN_PROGRESO"-> EN_PROGRESO
+                "EN PROGRESO"-> EN_PROGRESO
                 else -> null
             }
         }
