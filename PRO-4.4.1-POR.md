@@ -3,11 +3,11 @@
 
 Aquí voy a poner un enlace a las clases a las que les he añadido documentación KDoc:
 
-- [RepoUsuarios]()
+- [RepoUsuarios](https://github.com/PabloOstenero/TaskManager-POSTREY-2/blob/4.4.1-POR/MEJORA-TASK/src/main/kotlin/accesoDatos/RepoUsuarios.kt)
 
-- [RepoActividades]()
+- [RepoActividades](https://github.com/PabloOstenero/TaskManager-POSTREY-2/blob/4.4.1-POR/MEJORA-TASK/src/main/kotlin/accesoDatos/RepoActividades.kt)
 
-- [ActividadService]()
+- [ActividadService](https://github.com/PabloOstenero/TaskManager-POSTREY-2/blob/4.4.1-POR/MEJORA-TASK/src/main/kotlin/servicios/ActividadService.kt)
 
 ## 2. **Generación con Dokka**
 
@@ -29,4 +29,4 @@ Por seguir los pasos de la práctica, he cambiado la ruta del sitio web de la do
 
 Igualmente, aquí voy a dejar un enlace a la carpeta donde se encuentra la documentación generada por Dokka:
 
-[Documentación generada por Dokka]()
+[Documentación generada por Dokka](https://github.com/PabloOstenero/TaskManager-POSTREY-2/tree/4.4.1-POR/doc/dokka/html)
